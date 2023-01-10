@@ -1,3 +1,4 @@
+# https://medium.com/@knoldus/how-to-create-aws-sns-using-terraform-f1cae5801bb0
 resource "aws_cloudwatch_metric_alarm" "example" {
   alarm_name          = "example"
   comparison_operator = "GreaterThanThreshold"
