@@ -1,0 +1,44 @@
+# https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Dashboard-Body-Structure.html
+{
+   "start": "-PT9H",
+   "periodOverride": "inherit",
+   "widgets": [
+      {
+         "type":"metric",
+         "x":0,
+         "y":0,
+         "width":12,
+         "height":6,
+         "properties":{
+            "metrics":[
+               [ "AWS/EC2", "DiskReadBytes", "InstanceId", "i-123",{ "id": "m1" } ],
+               [ ".", ".", ".", "i-abc", { "id": "m2" } ],
+               [ { "expression": "SUM(METRICS())", "label": "Sum of DiskReadbytes", "id": "e3" } ]
+            ],
+            "view": "timeSeries",
+            "stacked": false,
+            "period":300,
+            "stat":"Average",
+            "region":"us-east-1",
+            "title":"EC2 Instance CPU"
+         }
+      },
+      {
+         "type":"metric",
+         "x":0,
+         "y":0,
+         "width":18,
+         "height":9,
+         "properties":{
+            "metrics":[
+               [ { "expression": "SEARCH('{AWS/EC2,InstanceId} MetricName=\"CPUUtilization\"', 'Average', 300)", "id": "e1" } ]
+            ],
+            "view": "timeSeries",
+            "stacked": false,
+            "region":"us-east-1",
+            "title":"EC2 Instance CPU"
+         }
+      }
+   ]
+}
+    
